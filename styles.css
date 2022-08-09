@@ -1,0 +1,70 @@
+:root {
+  --color-1: #4895ef;
+  --color-2: #F72585;
+  --color-3: #3A0CA3;
+
+  --color-1-dark: #244a77;
+  --color-2-dark: #7b1242;
+  --color-3-dark: #1d0651;
+
+  --color-dislike: #A73030;
+  --color-like: #60A730;
+  --color-loading: #888888;
+  
+  --color-dislike-background: #A730307F;
+  --color-like-background: #60A7307F;
+  --color-loading-background: #8888887F;
+  
+  --color-dislike-background-opaque: #531818;
+  --color-like-background-opaque: #305318;
+  --color-loading-background-opaque: #424242;
+}
+
+body::before, body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@font-face {
+  src: url("/assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf") format("truetype");
+  font-family: "Atkinson Hyperlegible";
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
+@font-face {
+  src: url("/assets/fonts/Atkinson-Hyperlegible-Bold-102.ttf") format("truetype");
+  font-family: "Atkinson Hyperlegible";
+  font-weight: bold;
+  font-style: normal;
+  font-display: fallback;
+}
+
+* {
+  font-family: "Atkinson Hyperlegible", Tahoma, Verdana, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  color: #333333; /* Default font color */
+}
+
+html, body {
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+body {
+  text-align: center;
+}
+

@@ -1,0 +1,56 @@
+{
+  "name": "chesswebsite",
+  "version": "1.0.0",
+  "description": "A little website for playing chess.",
+  "main": "index.html",
+  "scripts": {
+    "start": "web-dev-server --open / --app-index index.html --node-resolve",
+    "start:watch": "web-dev-server --open / --app-index index.html --node-resolve --watch",
+    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve",
+    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch",
+    "lint": "eslint --ext .js . --ignore-path .gitignore",
+    "format": "eslint --ext .js . --fix --ignore-path .gitignore",
+    "build": "rimraf dist && rollup -c rollup.config.js && cp -r ./css ./dist/css && cp -r ./assets ./dist",
+    "start:build": "npm run build && web-dev-server --root-dir dist --open / --app-index dist/index.html --compatibility none"
+  },
+  "keywords": [
+    "Chess"
+  ],
+  "author": "Cornelis de Mooij",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/eslint-parser": "^7.13.8",
+    "@open-wc/building-rollup": "^2.0.1",
+    "@open-wc/eslint-config": "^4.3.0",
+    "@open-wc/testing": "^3.1.4",
+    "@web/dev-server": "^0.1.8",
+    "@web/test-runner": "^0.12.15",
+    "deepmerge": "^4.2.2",
+    "eslint": "^7.21.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.40.0"
+  },
+  "dependencies": {
+    "@babel/eslint-plugin": "^7.17.7",
+    "ajv": "^8.11.0",
+    "lit": "^2.2.3"
+  }
+}
