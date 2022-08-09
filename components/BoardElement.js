@@ -18,6 +18,12 @@ class BoardElement extends LitElement {
       tr:nth-child(even) td:nth-child(odd) {background: #CCC}
       tr:nth-child(odd) td:nth-child(even) {background: #CCC}
       tr:nth-child(odd) td:nth-child(odd) {background: #FFF}
+
+      td.piece {
+        font-size: 3rem;
+        line-height: 1rem;
+        padding-top: 0.5rem;
+      }
     `;
   }
 
@@ -42,6 +48,10 @@ class BoardElement extends LitElement {
         this.grid[i][j] = "-";
       }
     }
+    this.grid[0][0] = '♜';
+    this.grid[0][7] = '♜';
+    this.grid[7][0] = '♖';
+    this.grid[7][7] = '♖';
   }
 
   render() {
@@ -50,14 +60,32 @@ class BoardElement extends LitElement {
         <table>
           ${this.grid.map((row, rowIndex) => 
             html`<tr>${
-              row.map((column, columnIndex) => 
-                html`<td>${this.rowIndexToNumber(rowIndex)}${this.columnIndexToLetter(columnIndex)}</td>`
+              row.map((piece, columnIndex) => 
+                html`<td class="${this.makeSquareClass(piece, rowIndex, columnIndex)}">
+                  ${this.makeSquareContent(piece, rowIndex, columnIndex)}
+                </td>`
               )
             }</tr>`
           )}
         </table>
       </div>
     `;
+  }
+
+  makeSquareClass(piece, rowIndex, columnIndex) {
+    if (piece !== '-') {
+      return 'piece';
+    } else {
+      return '';
+    }
+  }
+
+  makeSquareContent(piece, rowIndex, columnIndex) {
+    if (piece === '-') {
+      return `${this.rowIndexToNumber(rowIndex)}${this.columnIndexToLetter(columnIndex)}`;
+    } else {
+      return piece;
+    }
   }
 
   rowIndexToNumber(rowIndex) {
